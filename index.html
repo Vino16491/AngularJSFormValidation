@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="script.js"></script>
+
+<body>
+
+  <h2>AngularJS Form Validation</h2>
+
+  <form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+
+    <p>Username:
+      <br>
+      <input type="text" name="user" ng-model="user" required>
+      <span style="color:red" ng-show="myForm.$submitted && myForm.user.$error.required">Username is required.</span>
+
+    </p>
+
+    <p>Email:
+      <br>
+      <input type="email" name="email" ng-model="email" ng-pattern="emailRegex" required>
+      <span style="color:red" ng-show="(myForm.$submitted && myForm.email.$error.required) || (myForm.$submitted && myForm.email.$invalid)">Invalid email address.</span>
+
+    </p>
+    <p>ZipCode:
+      <br>
+      <input type="text" name="zipCode" ng-model="zipCode" ng-pattern="/^(\d{5}-\d{4}|\d*)$/" required>
+      <span style="color:red" ng-show="(myForm.$submitted && myForm.zipCode.$error.required) || (myForm.$submitted && myForm.zipCode.$invalid)">Invalid Zip Code.</span>
+
+    </p>
+
+    <p>Phone Number:
+      <br>
+      <input type="text" name="phoneNumber" ng-model="phoneNumber" ng-pattern="phoneNumberRegex" maxlength="10" required>
+      <span style="color:red" ng-show="(myForm.$submitted && myForm.phoneNumber.$error.required) || (myForm.$submitted && myForm.phoneNumber.$invalid)">Invalid Phone Number</span>
+
+    </p>
+    
+    <p>Gender: 
+      <input type="radio" name="gender" ng-model="gender" value="M" required>Male
+      <input type="radio" name="gender" ng-model="gender" value="F" required>Female <br>
+      <span ng-if="gender" style="color:blue">{{gender}} is selected</span>
+      <span ng-show="myForm.$submitted && myForm.gender.$error.required" style="color:red">Please select a value</span>
+      
+    </p>
+
+
+
+    <p> Tick to copy above details to below input-
+      <br>
+      <input type="checkbox" ng-model="checkAddress" ng-click="myFunc()" ng-checked="checkAddress">Copy Details
+      <br>
+    </p>
+
+
+
+    <p>Username:
+      <br>
+      <input type="text" name="user1" ng-model="user1" required ng-disabled="checkAddress">
+      <span style="color:red" ng-show="myForm.$submitted && myForm.user1.$error.required">Username is required.</span>
+
+    </p>
+
+    <p>Email:
+      <br>
+      <input type="email" name="email1" ng-model="email1" ng-pattern="emailRegex" ng-disabled="checkAddress" required>
+      <span style="color:red" ng-show="(myForm.$submitted && myForm.email1.$error.required) || (myForm.$submitted && myForm.email1.$invalid)">Invalid email address.</span>
+
+    </p>
+    <p>ZipCode:
+      <br>
+      <input type="text" name="zipCode1" ng-model="zipCode1" ng-pattern="/^(\d{5}-\d{4}|\d*)$/" ng-disabled="checkAddress" required>
+      <span style="color:red" ng-show="(myForm.$submitted && myForm.zipCode1.$error.required) || (myForm.$submitted && myForm.zipCode1.$invalid)">Invalid Zip Code.</span>
+
+    </p>
+
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+
+
+</body>
+
+</html>
