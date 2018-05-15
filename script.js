@@ -15,8 +15,18 @@
       $scope.zipCode1 = ""; 
      }
      
-   }
+   };
+
+   //Date Validation variables
+   $scope.date = new Date();
    
+   $scope.currentDate = new Date($scope.date.getFullYear()+"-"+($scope.date.getMonth() + 1)+"-"+$scope.date.getDate())
+   $scope.oldDate = new Date(($scope.date.getFullYear() - 100)+"-"+($scope.date.getMonth() + 1)+"-"+$scope.date.getDate())
    
-  
+   //ng-select test variable
+$scope.paymentOption = {
+        Pay01 : "Google Wallet",
+        Pay02 : "Credit Card",
+        Pay03 : "Debit Card"
+    }  
  });

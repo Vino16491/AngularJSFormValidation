@@ -43,8 +43,48 @@
       <span ng-show="myForm.$submitted && myForm.gender.$error.required" style="color:red">Please select a value</span>
       
     </p>
+    <!-- Date of Birth with Validation -->
+    <p>Date Of Birth:
+     <!--  restricted dates 'min and max' may not work in the same way  -->
+     <input type="date" name="dateOfBirth" ng-model="dateOfBirth"  min="oldDate" max="currentDate" required>
+     
+     <p>
+       Date Status: Old Date is <span style="color: orange">{{oldDate | date}}</span> & current Date is <span style="color: green">{{currentDate | date}}</span> and <br> <span style="color: purple">selected date is {{dateOfBirth | date}}</span> 
+     </p> 
+     <p><span ng-show="myForm.$submitted && myForm.gender.$error.required" style="color:red">Please select valid date</span>
+      <span ng-if="dateOfBirth < oldDate" style="color:red">Date of birth is too old</span>
+      <span ng-if="dateOfBirth >= currentDate" style="color:red">Date of birth cant be future date</span>
+    </p>
+
+    <!-- select drop down -->
+
+<p> Select a topic:
+  <select ng-model="multiOption">
+    <option value="">select
+    <option value="healthcare">healthcare
+    <option value="medicare">medicare
+    <option value="payment">payment
+  </select>
+</p>
+  <div>
+  <div ng-if="multiOption == 'healthcare'">
+    healthcare id: <input type="text" name="healthcare" ng-model='healthcareId'> <span style="color: brown; font-size: 35px"> {{healthcareId}}</span>
+  </div>
+  <div ng-if="multiOption == 'medicare'">
+    medicare id: <input type="text" name="medicare" ng-model='medicareId'> <span style="color: brown; font-size: 35px"> {{medicareId}}</span>
+  </div>
+  <div ng-if="multiOption == 'payment'">
+     select your payment option: 
+    <select ng-model="selectedPayment" ng-options="x for (x, y) in paymentOption"> 
+</select>
+<p>Payment Option selected is <b style="color:brown; font-size: 35px">{{selectedPayment}}</b>
+
+  </div>
+</div>
 
 
+
+<br>
 
     <p> Tick to copy above details to below input-
       <br>
@@ -79,7 +119,6 @@
       <input type="submit">
     </p>
   </form>
-
 
 </body>
 
