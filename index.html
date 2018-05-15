@@ -51,7 +51,7 @@
      <p>
        Date Status: Old Date is <span style="color: orange">{{oldDate | date}}</span> & current Date is <span style="color: green">{{currentDate | date}}</span> and <br> <span style="color: purple">selected date is {{dateOfBirth | date}}</span> 
      </p> 
-     <p><span ng-show="myForm.$submitted && myForm.gender.$error.required" style="color:red">Please select valid date</span>
+     <p><span ng-show="myForm.$submitted && myForm.dateOfBirth.$error.required" style="color:red">Please select valid date</span>
       <span ng-if="dateOfBirth < oldDate" style="color:red">Date of birth is too old</span>
       <span ng-if="dateOfBirth >= currentDate" style="color:red">Date of birth cant be future date</span>
     </p>
